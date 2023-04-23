@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% load static %}
+ 
+
+{% block formularios %}
+{{mensaje}}    
+<h1>Lista de Torneos</h1>
+
+        {% for lista in torneo %}
+            <li>{{lista.nombre_torneo}}</li>
+            <div style="display: flex;">
+                <div style="margin-right: 50px;">
+                    <form action="{% url 'eliminarTorneo' lista.id %}" method="POST">{% csrf_token %}
+                        <button type="submit"> Eliminar </button>
+                    </form>
+                </div>
+                <div style="margin-right: 50px;">
+                        <button type="submit"> <a href="{% url 'editarTorneo' lista.id %}">Editar</a></button> 
+                </div>
+            </div>
+        {% endfor %}
+        
+    <a href="{% url 'crearTorneo' %}">Crear torneo</a> 
+{% endblock formularios %}
