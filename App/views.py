@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import *
 from .forms import *
+from django.views.generic import ListView
 # Create your views here.
 
 def inicio(request):
     return render(request, 'index.html')
 
 def cartas(request):
-    return render(request, 'read/cartas.html')
+    return render(request, 'cartas.html')
 
 
 #CRUD Torneo
@@ -18,7 +19,7 @@ def torneo(request):
 
     torneo = Torneo.objects.all()   
 
-    return render(request, 'read/torneo.html', {"torneo": torneo})
+    return render(request, 'torneo.html', {"torneo": torneo})
 
 
 # Create Torneo
@@ -37,11 +38,11 @@ def crearTorneo(request):
             inscripcion.save()
             return redirect(reverse('Inicio'))
         else:
-            return render(request, 'read/cartas.html',{"mensaje":"Formulario Invalido"})
+            return render(request, 'cartas.html',{"mensaje":"Formulario Invalido"})
 
     else:
         miFormulario = TorneoFormulario()
-        return render(request, 'create/crear-torneo.html', {'miFormulario': miFormulario})
+        return render(request, 'crear-torneo.html', {'miFormulario': miFormulario})
     
 #Delete Torneo
 
@@ -52,7 +53,7 @@ def eliminarTorneo(request, id):
         torneo.delete()
 
         torneos = Torneo.objects.all()
-        return render(request, 'delete/eliminartorneo.html', {"torneos":torneos} )
+        return render(request, 'eliminartorneo.html', {"torneos":torneos} )
 
 #Update Torneo
 
@@ -73,7 +74,7 @@ def editarTorneo(request, id):
             torneo.save()
             return redirect(reverse('Inicio'))
         else:
-            return render(request, 'read/torneo.html',{"mensaje":"Formulario Invalido"})
+            return render(request, 'torneo.html',{"mensaje":"Formulario Invalido"})
 
     else:
         miFormulario = TorneoFormulario(initial={
@@ -84,7 +85,7 @@ def editarTorneo(request, id):
             "Codigo":torneo.codigo_de_torneo,
             "Imagen": torneo.imagen
         })
-        return render(request, 'update/editar-torneo.html', {'miFormulario': miFormulario})
+        return render(request, 'editar-torneo.html', {'miFormulario': miFormulario})
 
 
 def contactenos(request):

@@ -43,7 +43,23 @@
       <!-- banner bg main start -->
       <div class="banner_bg_main">
          <!-- header top section start -->
-        {% include 'navbar.html' %}
+         <div class="container">
+            <div class="header_section_top">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="custom_menu">
+                        <ul>
+                           <li><a href="{% url 'Inicio' %}">Inicio</a></li>
+                           <li><a href="{% url 'Cartas' %}">Cartas</a></li>   
+                           <li><a href="{% url 'torneo' %}">Torneo</a></li>
+                           <li><a href="{% url 'Contactenos' %}">Contactenos</a></li>
+                           <li><a href="{% url 'About' %}">Acerca de mi</a></li> 
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
          <!-- header top section start -->
          <!-- logo section start -->
          <div class="logo_section">
