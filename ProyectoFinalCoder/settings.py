@@ -120,8 +120,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    "/ruta/al/directorio/estatico1/",
-    "/ruta/al/directorio/estatico2/",
+    '../App/static/css/'
+    '../App/static/fonts/'
+    '../App/static/images/'
+    '../App/static/js/'
 ]
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
