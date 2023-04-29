@@ -8,14 +8,15 @@
 <h1>Lista de Torneos</h1>
 
         {% for lista in torneo %}
-            <li>{{lista.nombre_torneo}}</li>
-            <div style="display: flex;">
-                <div style="margin-right: 50px;">
+            <p>{{lista.nombre_torneo}}  {{lista.codigo_de_torneo}}</p>
+            
+            <div style="display: flex; column-gap: 5px;">
+                <div >
                     <form action="{% url 'eliminarTorneo' lista.id %}" method="POST">{% csrf_token %}
                         <button type="submit"> Eliminar </button>
                     </form>
                 </div>
-                <div style="margin-right: 50px;">
+                <div >
                         <button type="submit"> <a href="{% url 'editarTorneo' lista.id %}">Editar</a></button> 
                 </div>
             </div>
